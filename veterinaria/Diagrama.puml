@@ -1,0 +1,75 @@
+@startuml
+abstract class veterinaria.Mascota {
+- String nombre
+- Date fechaNacimiento
+- double peso
++ <<Create>> Mascota(String,Date,double)
++ String getNombre()
++ void setNombre(String)
++ Date getFechaNacimiento()
++ void setFechaNacimiento(Date)
++ double getPeso()
++ void setPeso(double)
+~ {abstract}String mostrarEspecie()
+~ {abstract}String mostrarRecomendaciones()
+}
+
+
+class veterinaria.Solicitante {
+~ String nombre
+~ int edad
+~ String direccion
++ <<Create>> Solicitante()
++ <<Create>> Solicitante(String,int,String)
++ String getNombre()
++ void setNombre(String)
++ int getEdad()
++ void setEdad(int)
++ String getDireccion()
++ void setDireccion(String)
+}
+
+
+class veterinaria.Encargado {
+- {static} Encargado instancia
+- String nombre
+- <<Create>> Encargado(String)
++ {static} Encargado getInstancia()
++ String getNombre()
+}
+
+
+class Main {
++ {static} void main(String[])
+}
+
+class veterinaria.Solicitud {
+- Solicitante solicitante
+- Mascota mascota
+- Encargado encargado
+- Date fechaActual
++ <<Create>> Solicitud(Solicitante,Mascota,Encargado)
++ Date getFechaActual()
++ void mostrarTicket()
+}
+
+
+class veterinaria.Conejo {
++ <<Create>> Conejo(String,Date,double)
+~ String mostrarEspecie()
+~ String mostrarRecomendaciones()
+}
+
+class veterinaria.ConejoEnano {
++ <<Create>> ConejoEnano(String,Date,double)
+~ String mostrarEspecie()
+~ String mostrarRecomendaciones()
+}
+
+
+veterinaria.Mascota <|-- veterinaria.Conejo
+veterinaria.Mascota <|-- veterinaria.ConejoEnano
+veterinaria.Solicitud *-- veterinaria.Solicitante
+veterinaria.Solicitud *-- veterinaria.Mascota
+veterinaria.Solicitud *-- veterinaria.Encargado
+@enduml
