@@ -3,5 +3,5 @@ Parcial de la materia Programacion Orientada a Obejtos de la carrera Analista de
 
 ## Diagrama de Clases
 
-![Diagrama de Clases](diagrama_clases.png)
+![Diagrama de Clases](Diagrama.png)
 
